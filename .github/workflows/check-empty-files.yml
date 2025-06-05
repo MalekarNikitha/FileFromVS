@@ -1,0 +1,36 @@
+name: Check for Empty Text Files
+
+on:
+  push:
+    branches:
+      - main
+      - branch1
+
+jobs:
+  check-empty-files:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: main
+
+      - name: Checkout branch1
+        uses: actions/checkout@v4
+        with:
+          ref: branch1
+          path: branch1
+
+      - name: Check for empty text files
+        run: |
+          echo "Checking for empty .txt files in both branches..."
+          empty_files=$(find main branch1 -name "*.txt" -size 0)
+          if [ -n "$empty_files" ]; then
+            echo "❌ Empty text files found:"
+            echo "$empty_files"
+            exit 1
+          else
+            echo "✅ No empty text files found."
+          fi
