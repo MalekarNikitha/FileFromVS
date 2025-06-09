@@ -20,8 +20,8 @@ jobs:
       - name: Checkout branch1
         uses: actions/checkout@v4
         with:
-          ref: branch1
-          path: branch1
+          ref: Branch1
+          path: Branch1
 
       - name: Check for empty text files
         run: |
