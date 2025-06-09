@@ -26,7 +26,7 @@ jobs:
       - name: Check for empty text files
         run: |
           echo "Checking for empty .txt files in both branches..."
-          empty_files=$(find main branch1 -name "*.txt" -size 0)
+          empty_files=$(find main Branch1 -name "*.txt" -size 0)
           if [ -n "$empty_files" ]; then
             echo "❌ Empty text files found:"
             echo "$empty_files"
