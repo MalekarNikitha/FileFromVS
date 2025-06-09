@@ -22,6 +22,11 @@ jobs:
         with:
           ref: Branch1
           path: Branch1
+               
+      - name: Debug - List all .txt files
+        run: |
+            echo "Listing all .txt files in both branches:"
+            find main Branch1 -name "*.txt" -exec ls -lh {} \;
 
       - name: Check for empty text files
         run: |
