@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      - branch1
+      - Branch1
 
 jobs:
   check-empty-files:
@@ -17,7 +17,7 @@ jobs:
           ref: main
           path: main
 
-      - name: Checkout branch1
+      - name: Checkout Branch1
         uses: actions/checkout@v4
         with:
           ref: Branch1
@@ -26,7 +26,7 @@ jobs:
       - name: Check for empty text files
         run: |
           echo "Checking for empty .txt files in both branches..."
-          empty_files=$(find main branch1 -name "*.txt" -size 0)
+          empty_files=$(find main Branch1 -name "*.txt" -size 0)
           if [ -n "$empty_files" ]; then
             echo "❌ Empty text files found:"
             echo "$empty_files"
